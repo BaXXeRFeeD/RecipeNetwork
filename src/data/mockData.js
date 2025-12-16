@@ -16,6 +16,7 @@ export const initialRecipes = [
 
 export const initialUsers = [
     { id: 1, username: 'admin', password: 'admin', favorites: [], subscriptions: [] },
+    { id: 2, username: 'admin2', password: 'admin', favorites: [], subscriptions: [] },
 ];
 
 export const categories = ['десерты', 'мясо', 'напитки', 'веган'];

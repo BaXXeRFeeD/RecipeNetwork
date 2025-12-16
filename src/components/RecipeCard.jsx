@@ -3,8 +3,13 @@ import LikeButton from './LikeButton';
 import FavoriteButton from './FavoriteButton';
 import SubscriptionButton from './SubscriptionButton';
 import DeleteButton from './DeleteButton';
+import useAuth from '../hooks/useAuth';
 
 const RecipeCard = ({ recipe }) => {
+    const { users } = useAuth();
+    const author = users.find((u) => u.id === recipe.author);
+    const authorUsername = author ? author.username : 'Неизвестный';
+
     return (
         <div className="border rounded p-4 shadow">
             {recipe.photo && (
@@ -14,7 +19,7 @@ const RecipeCard = ({ recipe }) => {
                     className="w-full h-48 object-cover mb-2"
                 />
             )}
-
+            <p className="text-gray-600 mb-1">Автор: {authorUsername}</p>
             <h3 className="font-bold">{recipe.title}</h3>
             <p>{recipe.category}</p>
 

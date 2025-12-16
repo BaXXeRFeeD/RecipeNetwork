@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 const Header = () => {
-    const { user, logout } = useAuth();
+    const {user, logout} = useAuth();
 
     return (
         <header className="bg-blue-500 text-white p-4">

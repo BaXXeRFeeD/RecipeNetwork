@@ -1,6 +1,6 @@
-import { categories } from '../data/mockData';
+import {categories} from '../data/mockData';
 
-const CategoryFilter = ({ onFilter }) => {
+const CategoryFilter = ({onFilter}) => {
     return (
         <select onChange={(e) => onFilter(e.target.value)} className="w-full border p-2 mb-4">
             <option value="">Все категории</option>

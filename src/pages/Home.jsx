@@ -12,10 +12,9 @@ const Home = () => {
     const [category, setCategory] = useState('');
 
     const filteredRecipes = recipes.filter((r) => {
-        const isInFeed = !user || user.subscriptions.includes(r.author) || r.author === user.id;
         const matchesSearch = r.title.toLowerCase().includes(search.toLowerCase());
         const matchesCategory = category ? r.category === category : true;
-        return isInFeed && matchesSearch && matchesCategory;
+        return matchesSearch && matchesCategory;
     });
 
     return (

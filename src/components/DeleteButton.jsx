@@ -1,10 +1,10 @@
 import useAuth from '../hooks/useAuth';
 import useRecipes from '../hooks/useRecipes';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
-const DeleteButton = ({ recipe, redirectTo = null, onDeleted = null }) => {
-    const { user } = useAuth();
-    const { deleteRecipe } = useRecipes();
+const DeleteButton = ({recipe, redirectTo = null, onDeleted = null}) => {
+    const {user} = useAuth();
+    const {deleteRecipe} = useRecipes();
     const navigate = useNavigate();
 
     const canDelete = user && recipe && user.id === recipe.author;

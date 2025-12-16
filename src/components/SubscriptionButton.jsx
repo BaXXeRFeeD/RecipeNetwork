@@ -14,7 +14,6 @@ const SubscriptionButton = ({authorId}) => {
         setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
         setUser(updatedUser);
     };
-
     return (
         <button onClick={handleSubscribe} className="text-green-500">
             {isSubscribed ? 'Отписаться' : 'Подписаться'}

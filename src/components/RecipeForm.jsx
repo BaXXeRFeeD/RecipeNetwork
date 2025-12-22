@@ -34,7 +34,7 @@ const RecipeForm = ({ onSubmitSuccess }) => {
                     ingredients: data.ingredients,
                     steps: data.steps,
                     photo: reader.result,
-                    likes: 0,
+                    likedBy: [],
                     comments: [],
                 };
                 reset();
@@ -49,7 +49,7 @@ const RecipeForm = ({ onSubmitSuccess }) => {
                 ingredients: data.ingredients,
                 steps: data.steps,
                 photo: '',
-                likes: 0,
+                likedBy: [],
                 comments: [],
             };
             reset();
@@ -70,13 +70,21 @@ const RecipeForm = ({ onSubmitSuccess }) => {
 
             <div className="mb-4">
                 <label htmlFor="title" className="block text-sm font-medium text-gray-700">Название</label>
-                <input id="title" {...register('title', { required: 'Название обязательно' })} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
+                <input
+                    id="title"
+                    {...register('title', { required: 'Название обязательно' })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-primary focus:ring-primary"
+                />
                 {errors.title && <p className="text-red-500 text-xs">{errors.title.message}</p>}
             </div>
 
             <div className="mb-4">
                 <label htmlFor="category" className="block text-sm font-medium text-gray-700">Категория</label>
-                <select id="category" {...register('category', { required: 'Категория обязательна' })} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                <select
+                    id="category"
+                    {...register('category', { required: 'Категория обязательна' })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-primary focus:ring-primary"
+                >
                     <option value="">Выберите категорию</option>
                     <option value="десерты">Десерты</option>
                     <option value="мясо">Мясо</option>
@@ -90,32 +98,51 @@ const RecipeForm = ({ onSubmitSuccess }) => {
                 <label className="block text-sm font-medium text-gray-700">Ингредиенты</label>
                 {ingredientFields.map((field, index) => (
                     <div key={field.id} className="flex mb-2">
-                        <input {...register(`ingredients.${index}.name`, { required: true })} placeholder="Ингредиент" className="mr-2 flex-1 border p-2" />
-                        <input {...register(`ingredients.${index}.quantity`, { required: true })} placeholder="Количество" className="mr-2 flex-1 border p-2" />
-                        <button type="button" onClick={() => removeIngredient(index)} className="text-red-500">Удалить</button>
+                        <input
+                            {...register(`ingredients.${index}.name`, { required: true })}
+                            placeholder="Ингредиент"
+                            className="mr-2 flex-1 border border-gray-300 rounded-md p-2 focus:border-primary focus:ring-primary"
+                        />
+                        <input
+                            {...register(`ingredients.${index}.quantity`, { required: true })}
+                            placeholder="Количество"
+                            className="mr-2 flex-1 border border-gray-300 rounded-md p-2 focus:border-primary focus:ring-primary"
+                        />
+                        <button type="button" onClick={() => removeIngredient(index)} className="text-red-500 hover:text-red-700">Удалить</button>
                     </div>
                 ))}
-                <button type="button" onClick={() => appendIngredient({ name: '', quantity: '' })} className="text-blue-500">Добавить ингредиент</button>
+                <button type="button" onClick={() => appendIngredient({ name: '', quantity: '' })} className="text-blue-500 hover:text-blue-700">Добавить ингредиент</button>
             </div>
 
             <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">Шаги</label>
                 {stepFields.map((field, index) => (
                     <div key={field.id} className="flex mb-2">
-                        <input {...register(`steps.${index}.description`, { required: true })} placeholder={`Шаг ${index + 1}`} className="flex-1 border p-2" />
-                        <button type="button" onClick={() => removeStep(index)} className="ml-2 text-red-500">Удалить</button>
+                        <input
+                            {...register(`steps.${index}.description`, { required: true })}
+                            placeholder={`Шаг ${index + 1}`}
+                            className="flex-1 border border-gray-300 rounded-md p-2 focus:border-primary focus:ring-primary"
+                        />
+                        <button type="button" onClick={() => removeStep(index)} className="ml-2 text-red-500 hover:text-red-700">Удалить</button>
                     </div>
                 ))}
-                <button type="button" onClick={() => appendStep({ description: '' })} className="text-blue-500">Добавить шаг</button>
+                <button type="button" onClick={() => appendStep({ description: '' })} className="text-blue-500 hover:text-blue-700">Добавить шаг</button>
             </div>
 
             <div className="mb-4">
                 <label htmlFor="photo" className="block text-sm font-medium text-gray-700">Фото</label>
-                <input id="photo" type="file" accept="image/*" {...register('photo')} onChange={handlePhotoChange} className="mt-1 block w-full" />
-                {photoPreview && <img src={photoPreview} alt="Preview" className="mt-2 w-32 h-32 object-cover" />}
+                <input
+                    id="photo"
+                    type="file"
+                    accept="image/*"
+                    {...register('photo')}
+                    onChange={handlePhotoChange}
+                    className="mt-1 block w-full"
+                />
+                {photoPreview && <img src={photoPreview} alt="Preview" className="mt-2 w-32 h-32 object-cover rounded-md" />}
             </div>
 
-            <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded">Опубликовать</button>
+            <button type="submit" className="w-full bg-primary text-white py-2 rounded hover:bg-blue-600 transition">Опубликовать</button>
         </form>
     );
 };

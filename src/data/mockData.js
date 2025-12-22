@@ -8,7 +8,7 @@ export const initialRecipes = [
         ingredients: [{ name: 'Шоколад', quantity: '200г' }],
         steps: [{ description: 'Смешать ингредиенты' }],
         photo: tortUrl,
-        likes: 0,
+        likedBy: [],
         comments: [],
         author: 1,
     },

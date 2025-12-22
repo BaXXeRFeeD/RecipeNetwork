@@ -11,26 +11,20 @@ const RecipeCard = ({ recipe }) => {
     const authorUsername = author ? author.username : 'Неизвестный';
 
     return (
-        <div className="border rounded p-4 shadow">
-            {recipe.photo && (
-                <img
-                    src={recipe.photo}
-                    alt={recipe.title}
-                    className="w-full h-48 object-cover mb-2"
-                />
-            )}
+        <div className="border rounded p-4 shadow hover:shadow-lg transition-shadow duration-200 bg-white">
+            {recipe.photo && <img src={recipe.photo} alt={recipe.title} className="w-full h-48 object-cover mb-2 rounded-md" />}
             <p className="text-gray-600 mb-1">Автор: {authorUsername}</p>
             <h3 className="font-bold">{recipe.title}</h3>
             <p>{recipe.category}</p>
 
             <div className="flex flex-wrap items-center gap-2 mt-2">
-                <LikeButton recipeId={recipe.id} likes={recipe.likes} />
+                <LikeButton recipeId={recipe.id} likedBy={recipe.likedBy} />
                 <FavoriteButton recipeId={recipe.id} />
                 <SubscriptionButton authorId={recipe.author} />
                 <DeleteButton recipe={recipe} />
             </div>
 
-            <Link to={`/recipe/${recipe.id}`} className="text-blue-500 block mt-2">
+            <Link to={`/recipe/${recipe.id}`} className="text-blue-500 block mt-2 hover:underline">
                 Подробнее
             </Link>
         </div>

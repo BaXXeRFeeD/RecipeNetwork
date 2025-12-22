@@ -43,7 +43,7 @@ const RecipeDetail = () => {
             </ol>
 
             <div className="flex flex-wrap gap-2 items-center mb-4">
-                <LikeButton recipeId={recipe.id} likes={recipe.likes} />
+                <LikeButton recipeId={recipe.id} likedBy={recipe.likedBy} />
                 <FavoriteButton recipeId={recipe.id} />
                 <SubscriptionButton authorId={recipe.author} />
                 <DeleteButton recipe={recipe} redirectTo="/my-recipes" />

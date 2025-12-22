@@ -20,7 +20,10 @@ const DeleteButton = ({recipe, redirectTo = null, onDeleted = null}) => {
     };
 
     return (
-        <button onClick={handleDelete} className="text-red-600">
+        <button
+            onClick={handleDelete}
+            className="mr-2 px-3 py-1 rounded bg-red-100 text-red-600 hover:bg-red-200 transition flex items-center"
+        >
             Удалить
         </button>
     );

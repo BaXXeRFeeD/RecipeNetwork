@@ -5,7 +5,7 @@ function useRecipes() {
     const [recipes, setRecipes] = useLocalStorage('recipes', initialRecipes);
 
     const addRecipe = (newRecipe) => {
-        setRecipes((prev) => [...prev, { ...newRecipe, id: Date.now() }]);
+        setRecipes((prev) => [...prev, { ...newRecipe, id: Date.now(), likedBy: [] }]);
     };
 
     const updateRecipe = (id, updatedFields) => {

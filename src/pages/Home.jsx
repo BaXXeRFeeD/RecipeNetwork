@@ -21,7 +21,7 @@ const Home = () => {
         <div>
             <SearchBar onSearch={setSearch} />
             <CategoryFilter onFilter={setCategory} />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {filteredRecipes.length > 0 ? (
                     filteredRecipes.map((recipe) => <RecipeCard key={recipe.id} recipe={recipe} />)
                 ) : (

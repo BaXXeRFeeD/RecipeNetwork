@@ -92,7 +92,8 @@
 **Подписка на автора**
 
 **Атрибуты:**
-- `id`
+- `subscriberId`
+- `targetUserId`
 - `createdAt`
 
 **Назначение:**  
@@ -337,7 +338,8 @@ class Favorite {
 }
 
 class Subscription {
-  Long id
+  Long subscriberId
+  Long targetUserId
   Date createdAt
 }
 

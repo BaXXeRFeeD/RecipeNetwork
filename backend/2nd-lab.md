@@ -240,53 +240,53 @@ Value Object — это объект, который определяется н
 ## 8. UML-представление доменной модели
 
 ### Сущности и value objects
-```plantuml
-skinparam classAttributeIconSize 0
-left to right direction
+```mermaid
+classDiagram
+direction LR
 
 class User {
-  - id: Long
-  - username: String
-  - email: String
-  - password: String
-  - createdAt: Date
+  Long id
+  String username
+  String email
+  String password
+  Date createdAt
 }
 
 class Recipe {
-  - id: Long
-  - title: String
-  - description: String
-  - createdAt: Date
-  - updatedAt: Date
+  Long id
+  String title
+  String description
+  Date createdAt
+  Date updatedAt
 }
 
 class Comment {
-  - id: Long
-  - content: String
-  - createdAt: Date
+  Long id
+  String content
+  Date createdAt
 }
 
 class IngredientLine {
-  - id: Long
-  - ingredientName: String
-  - quantity: String
-  - unit: String
+  Long id
+  String ingredientName
+  String quantity
+  String unit
 }
 
 class RecipeStep {
-  - id: Long
-  - stepNumber: Integer
-  - instruction: String
-  - imageUrl: String
+  Long id
+  Integer stepNumber
+  String instruction
+  String imageUrl
 }
 
-User "1" -- "*" Recipe : creates
-User "1" -- "*" Comment : writes
-Recipe "1" -- "*" Comment : has
-Recipe "1" -- "*" IngredientLine : contains
-Recipe "1" -- "*" RecipeStep : consists of
+User "1" --> "*" Recipe : creates
+User "1" --> "*" Comment : writes
+Recipe "1" --> "*" Comment : has
+Recipe "1" --> "*" IngredientLine : contains
+Recipe "1" --> "*" RecipeStep : consists of
 
-User "*" -- "*" Recipe : likes
-User "*" -- "*" Recipe : favorites
-User "*" -- "*" User : subscriptions
+User "*" --> "*" Recipe : likes
+User "*" --> "*" Recipe : favorites
+User "*" --> "*" User : subscriptions
 ```

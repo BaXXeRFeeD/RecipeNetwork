@@ -1,0 +1,10 @@
+**/node_modules/
+**/dist/
+**/.env
+**/.env.bak-*
+*.log
+*.swp
+*.swo
+*.tmp
+*.tsbuildinfo
+.DS_Store
